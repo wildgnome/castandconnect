@@ -4,7 +4,14 @@ use App\Http\Controllers\NoteController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-Route::redirect('/', '/note')->name('dashboard');
+Route::get("/", function () {
+    return view('welcome');
+});
+
+Route::get("/home", function () {
+    return view('home');
+});
+Route::redirect('dashboard', '/note')->name('dashboard');
 
 Route::middleware(['auth', 'verified'])->group(function () {
 // Route::get('/note', [NoteController::class,'index'])->name('note.index');
